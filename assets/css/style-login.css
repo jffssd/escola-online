@@ -1,0 +1,108 @@
+html,body {
+	height: 100%;
+	background-color: #1E282C;
+}
+
+body.my-login-page {
+	background-color: #1E282C;
+	font-size: 14px;
+}
+
+.section-body{
+	background-color: #1E282C;
+}
+
+.my-login-page .brand {
+	width: 100px;
+	height: 49px;
+	overflow: hidden;
+	margin: 0 auto;
+	margin: 40px auto;
+	margin-bottom: 0px;
+}
+
+	.form-control input:focus, .form-control textarea:focus {
+	border: 1px solid green !important;
+	box-shadow: 0 0 3px green !important;
+	-moz-box-shadow: 0 0 3px green !important;
+	-webkit-box-shadow: 0 0 3px green !important;
+	}
+
+	input:focus, textarea:focus, select:focus {
+	outline-offset: 0px !important;
+	outline: none !important;
+	}
+
+
+.ces-main-color{
+	color: #ee4546;
+}
+
+.ces-main-color-link{
+	color: #ee4546;
+}
+
+.ces-main-color-link:hover{
+	text-decoration:none;
+	color: #d33c3d;
+}
+
+.ces-main-color-bg{
+	background-color: #ee4546;
+	color: #ffffff;
+}
+
+.ces-main-color-bg:hover{
+	background-color: #d33c3d;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+
+.my-login-page .brand img {
+	width: 100%;
+}
+
+.my-login-page .card-wrapper {
+	width: 400px;
+}
+
+.my-login-page .card {
+	border-color: transparent;
+	box-shadow: 0 0 40px rgba(0,0,0,.05);
+}
+
+.card-body-login{
+	margin: 0px 10px 10px 10px;
+}
+
+.form-login-title{
+	margin-top: 5px;
+	margin-left: ;
+}
+
+.my-login-page .form-control {
+	border-width: 2.3px;
+}
+
+.my-login-page .form-group label {
+	width: 100%;
+}
+
+.my-login-page .btn.btn-block {
+	padding: 12px 10px;
+}
+
+.my-login-page .margin-top20 {
+	margin-top: 20px;
+}
+
+.my-login-page .no-margin {
+	margin: 0;
+}
+
+.my-login-page .footer {
+	margin: 40px 0;
+	color: #888;
+	text-align: center;
+}

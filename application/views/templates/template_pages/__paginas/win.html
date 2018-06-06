@@ -1,0 +1,963 @@
+<!DOCTYPE html><html lang='en' class=''>
+<head>
+<link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+<link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+<link rel="canonical" href="https://codepen.io/Jursdotme/pen/xEkXKj?limit=all&page=14&q=coming+soon" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+<style class="cp-pen-styles">
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  color: #fff;
+}
+@media (max-width: 700px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+p.center {
+  text-align: center;
+}
+
+.wrapper {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/24650/IMG_9955.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 30px 0;
+}
+
+.wrapper-inner {
+  width: 720px;
+  margin: 0 auto;
+  max-width: 90%;
+  text-align: center;
+  color: #fff;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.logo {
+  max-width: 1920px;
+  display: block;
+  height: 70%;
+  width: 70%;
+  margin: 0 auto 3em;
+}
+@media (max-width: 700px) {
+  .logo {
+    max-width: 80%;
+    margin: 0 auto 2em;
+  }
+}
+
+h1 {
+  margin: 0;
+  font-size: 3em;
+}
+@media (max-width: 700px) {
+  h1 {
+    font-size: 2em;
+  }
+}
+
+p {
+  font-size: 1.2em;
+  font-weight: 200;
+  opacity: .8;
+}
+
+.tilbud {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.deltilbud {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border: 5px solid #61bf4f;
+  border-radius: 5px;
+  margin: 0 10px 30px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 235px;
+          flex: 1 0 235px;
+  color: #000;
+  text-decoration: none;
+}
+@media (max-width: 700px) {
+  .deltilbud {
+    padding: 10px;
+  }
+}
+.deltilbud p {
+  font-size: 2em;
+  line-height: 1.1;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+}
+.deltilbud p span {
+  opacity: .7;
+  font-weight: 200;
+  font-size: .65em;
+}
+
+.active .deltilbud {
+  background-color: #61bf4f;
+  border: 0px solid #61bf4f;
+  color: #fff;
+}
+
+.facebook-link {
+  color: #fff;
+  background-color: #3b5998;
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#timer {
+  margin-bottom: 1em;
+  font-size: 3em;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 0 20px #fff;
+}
+#timer div {
+  display: inline-block;
+  min-width: 90px;
+}
+#timer div span {
+  color: #fff;
+  display: block;
+  font-size: .35em;
+  font-weight: 400;
+}
+
+.holdplan {
+  padding: 0 16px;
+  overflow-x: auto;
+}
+.holdplan table {
+  margin: 30px auto;
+  background-color: rgba(255, 255, 255, 0.43);
+  border: 0;
+  min-width: 860px;
+  border-spacing: 0;
+}
+@media (max-width: 700px) {
+  .holdplan table {
+    min-width: 660px;
+  }
+}
+.holdplan th, .holdplan td {
+  Width: calc(100% / 8);
+  font-size: .8em;
+  padding: 6px 6px;
+}
+.holdplan tr:nth-child(odd) {
+  background-color: rgba(241, 241, 241, 0.23);
+}
+.holdplan th {
+  background-color: #58bc28;
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+#scroll-down {
+  color: #fff;
+  text-decoration: none;
+  line-height: 1;
+  margin: 1em 0;
+}
+#scroll-down p {
+  margin: 0;
+  color: #fff;
+  opacity: 1;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+#confetti {
+  background: transparent;
+  height: 100%;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  opacity: 0;
+  -webkit-transition: all 1 ease-in-out;
+  transition: all 1 ease-in-out;
+}
+#confetti.active {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  opacity: 1;
+  -webkit-transition: all 1 ease-in-out;
+  transition: all 1 ease-in-out;
+}
+</style></head><body>
+<div class="wrapper">
+  <div class="wrapper-inner">
+    <img class="logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/24650/smartfitness_logo.png" alt="" />
+    <div id="content">
+      <h1>Nu åbner Smart Fitness</h1>
+      <p>Den. 15 Oktober åbner Smartfitness dørene. Træn sikkert og målrettet med vejledning af fysioterapeuter og personling træner!</p>
+
+      <p>Tilmeld dig allerede 1. Oktober 2016</p>
+    </div>
+
+    <div id="timer"></div>
+
+    <div class="tilbud" id="tilbud-box">
+      <div class="deltilbud">
+        <p>Træn for 1,- </br><span>til de første 100</span></p>
+      </div>
+      <div class="deltilbud">
+        <p>Træn for 99,- </br><span>resten af 2016</span></p>
+      </div>
+    </div>
+
+    <a class="facebook-link" href="https://www.facebook.com/smartfitnesshorsens/?fref=ts" target="_blank">Følg med på Facebook</a>
+
+    <a href="javascript:void(0);" id="scroll-down">
+      <p>Se holdplanen</p>
+      <i class="fa fa-chevron-down" aria-hidden="true"></i>
+    </a>
+
+  </div>
+
+  <div class="holdplan">
+   
+    <table class="tableizer-table">
+      <thead>
+        <tr class="tableizer-firstrow">
+          <th>Tid</th>
+          <th>Mandag</th>
+          <th>Tirsdag</th>
+          <th>Onsdag</th>
+          <th>Torsdag</th>
+          <th>Fredag</th>
+          <th>Lørdag</th>
+          <th>Søndag</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>06.45-0715</td>
+          <td></td>
+          <td>FITNESS EXPRESS</td>
+          <td></td>
+          <td>FITNESS EXPRESS</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>08.00-09.00</td>
+          <td>Smart intro</td>
+          <td>YOGA FLOW/NI</td>
+          <td></td>
+          <td>POWER YOGA</td>
+          <td>smart intro</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>RYG,NAKKE,SKULDER</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>09.00-10.00</td>
+          <td></td>
+          <td>Smart Intro </td>
+          <td>smart intro</td>
+          <td>smart intro</td>
+          <td></td>
+          <td>smart intro</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>DANS DIG GLAD</td>
+          <td>X-FIT/MA</td>
+          <td>BODYPOWER</td>
+          <td>STRAM OP</td>
+          <td>BODYPOWER</td>
+          <td></td>
+          <td>smart intro</td>
+        </tr>
+        <tr>
+          <td>09.30-10.30</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>X-FIT</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>10.00-11.00</td>
+          <td>STRAM OP</td>
+          <td>POWER YOGA/MA</td>
+          <td>STEPBASIC</td>
+          <td>DANS DIG GLAD</td>
+          <td>YOGA FLOW</td>
+          <td></td>
+          <td>BODYPOWER(S)</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>10.30-11.30</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>POWER YOGA </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>11.00-12.00</td>
+          <td>MOR&BABY</td>
+          <td>Smart intro</td>
+          <td>smart intro</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>YOGAFLOW(S)</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>MINDFUL YOGA</td>
+          <td></td>
+          <td>Mindful Yoga</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>12.00-13.00</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>14.00-15.00</td>
+          <td>smart intro</td>
+          <td>Smart intro</td>
+          <td></td>
+          <td></td>
+          <td>smart intro</td>
+          <td></td>
+          <td>smart intro</td>
+        </tr>
+        <tr>
+          <td>15.00-16.00</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>YOGA TEKNIK</td>
+          <td>smart intro</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>16.00-17.00</td>
+          <td>**KIDSDANS 3-6ÅR</td>
+          <td>FAMILIE YOGA</td>
+          <td>**TEEN FITNESS</td>
+          <td>smart intro</td>
+          <td>FAMILIE CAMP</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Smart intro</td>
+          <td></td>
+          <td>smart intro</td>
+          <td></td>
+          <td>smart intro</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>16.45-17.45</td>
+          <td>STEPDANCE </td>
+          <td></td>
+          <td>KNÆHOLD</td>
+          <td>FAMILLIE CAMP</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>17.00-18.00</td>
+          <td>FITNESS EXPRESS</td>
+          <td>BODYPOWER</td>
+          <td>STEPDANCE</td>
+          <td>STRAM OP</td>
+          <td>POWER YOGA</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>17.45-18.45</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>RYG,NAKKE, SKULDER</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>Smart Intro</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>18.00-19.00</td>
+          <td>X-FIT</td>
+          <td>*YOGA FLOW</td>
+          <td>smart intro</td>
+          <td>BODYPOWER</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>DANS DIG GLAD</td>
+          <td></td>
+          <td></td>
+          <td>***HIIT/MR</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>18.30-19.30</td>
+          <td></td>
+          <td></td>
+          <td>POWER YOGA</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>19.00-20.00</td>
+          <td>POWER YOGA</td>
+          <td>***HIIT</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>20.00.21.00</td>
+          <td>smart intro</td>
+          <td></td>
+          <td>smart intro</td>
+          <td>smart intro</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <p class="center">(***) 30min - (**) 45min - (*) 90min</p>
+  <div id="confetti"></div>
+</div>
+<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script >$("#scroll-down").click(function() {
+    $('html, body').animate({
+        scrollTop: $(".holdplan").offset().top
+    }, 2000);
+});
+
+var now = new Date();
+var test_future = now.setSeconds(now.getSeconds() + 20);
+
+function updateTimer() {
+  future  = Date.parse("October 1, 2016 07:00:00");
+  now     = new Date();
+  
+  diff    = future - now;
+
+  days  = Math.floor( diff / (1000*60*60*24) );
+  hours = Math.floor( diff / (1000*60*60) );
+  mins  = Math.floor( diff / (1000*60) );
+  secs  = Math.floor( diff / 1000 );
+
+  d = days;
+  h = hours - days  * 24;
+  m = mins  - hours * 60;
+  s = secs  - mins  * 60;
+
+  document.getElementById("timer")
+    .innerHTML =
+      '<div>' + d + '<span>Dage</span></div>' +
+      '<div>' + h + '<span>Timer</span></div>' +
+      '<div>' + m + '<span>Minutter</span></div>' +
+      '<div>' + s + '<span>Sekunder</span></div>' ;
+  
+  if (diff < 0) {
+    $('#tilbud-box').addClass('active');
+    $('#confetti').addClass('active');
+    $('#timer').addClass('hidden');
+    
+    document.getElementById("content")
+    .innerHTML = 
+      '<h1>Nu åbner Smart Fitness</h1>' +
+      '<p>Den. 15 Oktober åbner Smartfitness dørene. Træn sikkert og målrettet med vejledning af fysioterapeuter og personling træner!</p>' +
+      '<p>Tilmeld dig nu!</p>';
+    
+    document.getElementById("tilbud-box")
+    .innerHTML =
+      '<a href="https://webshop.sport-solutions.dk/SMARTFitness/MembershipCart/1011" class="deltilbud">' +
+        '<p>Træn for 1,- </br><span>til de første 100</span></p>' +
+      '</a>' +
+      '<a href="https://webshop.sport-solutions.dk/SMARTFitness/MembershipCart/1012" class="deltilbud">' +
+        '<p>Træn for 99,- </br><span>resten af 2016</span></p>' +
+      '</a>';
+  }
+}
+setInterval('updateTimer()', 1000 );
+
+/* Confetti by Patrik Svensson (http://metervara.net) */
+$(document).ready(function() {
+    var frameRate = 30;
+    var dt = 1.0 / frameRate;
+    var DEG_TO_RAD = Math.PI / 180;
+    var RAD_TO_DEG = 180 / Math.PI;
+    var colors = [
+        ["#57bb29", "#396424"],
+        ["#fff", "#BFBFBF"]
+    ];
+
+    function Vector2(_x, _y) {
+        this.x = _x, this.y = _y;
+        this.Length = function() {
+            return Math.sqrt(this.SqrLength());
+        }
+        this.SqrLength = function() {
+            return this.x * this.x + this.y * this.y;
+        }
+        this.Equals = function(_vec0, _vec1) {
+            return _vec0.x == _vec1.x && _vec0.y == _vec1.y;
+        }
+        this.Add = function(_vec) {
+            this.x += _vec.x;
+            this.y += _vec.y;
+        }
+        this.Sub = function(_vec) {
+            this.x -= _vec.x;
+            this.y -= _vec.y;
+        }
+        this.Div = function(_f) {
+            this.x /= _f;
+            this.y /= _f;
+        }
+        this.Mul = function(_f) {
+            this.x *= _f;
+            this.y *= _f;
+        }
+        this.Normalize = function() {
+            var sqrLen = this.SqrLength();
+            if (sqrLen != 0) {
+                var factor = 1.0 / Math.sqrt(sqrLen);
+                this.x *= factor;
+                this.y *= factor;
+            }
+        }
+        this.Normalized = function() {
+            var sqrLen = this.SqrLength();
+            if (sqrLen != 0) {
+                var factor = 1.0 / Math.sqrt(sqrLen);
+                return new Vector2(this.x * factor, this.y * factor);
+            }
+            return new Vector2(0, 0);
+        }
+    }
+    Vector2.Lerp = function(_vec0, _vec1, _t) {
+        return new Vector2((_vec1.x - _vec0.x) * _t + _vec0.x, (_vec1.y - _vec0.y) * _t + _vec0.y);
+    }
+    Vector2.Distance = function(_vec0, _vec1) {
+        return Math.sqrt(Vector2.SqrDistance(_vec0, _vec1));
+    }
+    Vector2.SqrDistance = function(_vec0, _vec1) {
+        var x = _vec0.x - _vec1.x;
+        var y = _vec0.y - _vec1.y;
+        return (x * x + y * y + z * z);
+    }
+    Vector2.Scale = function(_vec0, _vec1) {
+        return new Vector2(_vec0.x * _vec1.x, _vec0.y * _vec1.y);
+    }
+    Vector2.Min = function(_vec0, _vec1) {
+        return new Vector2(Math.min(_vec0.x, _vec1.x), Math.min(_vec0.y, _vec1.y));
+    }
+    Vector2.Max = function(_vec0, _vec1) {
+        return new Vector2(Math.max(_vec0.x, _vec1.x), Math.max(_vec0.y, _vec1.y));
+    }
+    Vector2.ClampMagnitude = function(_vec0, _len) {
+        var vecNorm = _vec0.Normalized;
+        return new Vector2(vecNorm.x * _len, vecNorm.y * _len);
+    }
+    Vector2.Sub = function(_vec0, _vec1) {
+        return new Vector2(_vec0.x - _vec1.x, _vec0.y - _vec1.y, _vec0.z - _vec1.z);
+    }
+
+    function EulerMass(_x, _y, _mass, _drag) {
+        this.position = new Vector2(_x, _y);
+        this.mass = _mass;
+        this.drag = _drag;
+        this.force = new Vector2(0, 0);
+        this.velocity = new Vector2(0, 0);
+        this.AddForce = function(_f) {
+            this.force.Add(_f);
+        }
+        this.Integrate = function(_dt) {
+            var acc = this.CurrentForce(this.position);
+            acc.Div(this.mass);
+            var posDelta = new Vector2(this.velocity.x, this.velocity.y);
+            posDelta.Mul(_dt);
+            this.position.Add(posDelta);
+            acc.Mul(_dt);
+            this.velocity.Add(acc);
+            this.force = new Vector2(0, 0);
+        }
+        this.CurrentForce = function(_pos, _vel) {
+            var totalForce = new Vector2(this.force.x, this.force.y);
+            var speed = this.velocity.Length();
+            var dragVel = new Vector2(this.velocity.x, this.velocity.y);
+            dragVel.Mul(this.drag * this.mass * speed);
+            totalForce.Sub(dragVel);
+            return totalForce;
+        }
+    }
+
+    function ConfettiPaper(_x, _y) {
+        this.pos = new Vector2(_x, _y);
+        this.rotationSpeed = Math.random() * 600 + 800;
+        this.angle = DEG_TO_RAD * Math.random() * 360;
+        this.rotation = DEG_TO_RAD * Math.random() * 360;
+        this.cosA = 1.0;
+        this.size = 5.0;
+        this.oscillationSpeed = Math.random() * 1.5 + 0.5;
+        this.xSpeed = 40.0;
+        this.ySpeed = Math.random() * 60 + 50.0;
+        this.corners = new Array();
+        this.time = Math.random();
+        var ci = Math.round(Math.random() * (colors.length - 1));
+        this.frontColor = colors[ci][0];
+        this.backColor = colors[ci][1];
+        for (var i = 0; i < 4; i++) {if (window.CP.shouldStopExecution(1)){break;}
+            var dx = Math.cos(this.angle + DEG_TO_RAD * (i * 90 + 45));
+            var dy = Math.sin(this.angle + DEG_TO_RAD * (i * 90 + 45));
+            this.corners[i] = new Vector2(dx, dy);
+        }
+window.CP.exitedLoop(1);
+
+        this.Update = function(_dt) {
+            this.time += _dt;
+            this.rotation += this.rotationSpeed * _dt;
+            this.cosA = Math.cos(DEG_TO_RAD * this.rotation);
+            this.pos.x += Math.cos(this.time * this.oscillationSpeed) * this.xSpeed * _dt
+            this.pos.y += this.ySpeed * _dt;
+            if (this.pos.y > ConfettiPaper.bounds.y) {
+                this.pos.x = Math.random() * ConfettiPaper.bounds.x;
+                this.pos.y = 0;
+            }
+        }
+        this.Draw = function(_g) {
+            if (this.cosA > 0) {
+                _g.fillStyle = this.frontColor;
+            } else {
+                _g.fillStyle = this.backColor;
+            }
+            _g.beginPath();
+            _g.moveTo(this.pos.x + this.corners[0].x * this.size, this.pos.y + this.corners[0].y * this.size * this.cosA);
+            for (var i = 1; i < 4; i++) {if (window.CP.shouldStopExecution(2)){break;}
+                _g.lineTo(this.pos.x + this.corners[i].x * this.size, this.pos.y + this.corners[i].y * this.size * this.cosA);
+            }
+window.CP.exitedLoop(2);
+
+            _g.closePath();
+            _g.fill();
+        }
+    }
+    ConfettiPaper.bounds = new Vector2(0, 0);
+
+    function ConfettiRibbon(_x, _y, _count, _dist, _thickness, _angle, _mass, _drag) {
+        this.particleDist = _dist;
+        this.particleCount = _count;
+        this.particleMass = _mass;
+        this.particleDrag = _drag;
+        this.particles = new Array();
+        var ci = Math.round(Math.random() * (colors.length - 1));
+        this.frontColor = colors[ci][0];
+        this.backColor = colors[ci][1];
+        this.xOff = Math.cos(DEG_TO_RAD * _angle) * _thickness;
+        this.yOff = Math.sin(DEG_TO_RAD * _angle) * _thickness;
+        this.position = new Vector2(_x, _y);
+        this.prevPosition = new Vector2(_x, _y);
+        this.velocityInherit = Math.random() * 2 + 4;
+        this.time = Math.random() * 100;
+        this.oscillationSpeed = Math.random() * 2 + 2;
+        this.oscillationDistance = Math.random() * 40 + 40;
+        this.ySpeed = Math.random() * 40 + 80;
+        for (var i = 0; i < this.particleCount; i++) {if (window.CP.shouldStopExecution(3)){break;}
+            this.particles[i] = new EulerMass(_x, _y - i * this.particleDist, this.particleMass, this.particleDrag);
+        }
+window.CP.exitedLoop(3);
+
+        this.Update = function(_dt) {
+            var i = 0;
+            this.time += _dt * this.oscillationSpeed;
+            this.position.y += this.ySpeed * _dt;
+            this.position.x += Math.cos(this.time) * this.oscillationDistance * _dt;
+            this.particles[0].position = this.position;
+            var dX = this.prevPosition.x - this.position.x;
+            var dY = this.prevPosition.y - this.position.y;
+            var delta = Math.sqrt(dX * dX + dY * dY);
+            this.prevPosition = new Vector2(this.position.x, this.position.y);
+            for (i = 1; i < this.particleCount; i++) {if (window.CP.shouldStopExecution(4)){break;}
+                var dirP = Vector2.Sub(this.particles[i - 1].position, this.particles[i].position);
+                dirP.Normalize();
+                dirP.Mul((delta / _dt) * this.velocityInherit);
+                this.particles[i].AddForce(dirP);
+            }
+window.CP.exitedLoop(4);
+
+            for (i = 1; i < this.particleCount; i++) {if (window.CP.shouldStopExecution(5)){break;}
+                this.particles[i].Integrate(_dt);
+            }
+window.CP.exitedLoop(5);
+
+            for (i = 1; i < this.particleCount; i++) {if (window.CP.shouldStopExecution(6)){break;}
+                var rp2 = new Vector2(this.particles[i].position.x, this.particles[i].position.y);
+                rp2.Sub(this.particles[i - 1].position);
+                rp2.Normalize();
+                rp2.Mul(this.particleDist);
+                rp2.Add(this.particles[i - 1].position);
+                this.particles[i].position = rp2;
+            }
+window.CP.exitedLoop(6);
+
+            if (this.position.y > ConfettiRibbon.bounds.y + this.particleDist * this.particleCount) {
+                this.Reset();
+            }
+        }
+        this.Reset = function() {
+            this.position.y = -Math.random() * ConfettiRibbon.bounds.y;
+            this.position.x = Math.random() * ConfettiRibbon.bounds.x;
+            this.prevPosition = new Vector2(this.position.x, this.position.y);
+            this.velocityInherit = Math.random() * 2 + 4;
+            this.time = Math.random() * 100;
+            this.oscillationSpeed = Math.random() * 2.0 + 1.5;
+            this.oscillationDistance = Math.random() * 40 + 40;
+            this.ySpeed = Math.random() * 40 + 80;
+            var ci = Math.round(Math.random() * (colors.length - 1));
+            this.frontColor = colors[ci][0];
+            this.backColor = colors[ci][1];
+            this.particles = new Array();
+            for (var i = 0; i < this.particleCount; i++) {if (window.CP.shouldStopExecution(7)){break;}
+                this.particles[i] = new EulerMass(this.position.x, this.position.y - i * this.particleDist, this.particleMass, this.particleDrag);
+            }
+window.CP.exitedLoop(7);
+
+        }
+        this.Draw = function(_g) {
+            for (var i = 0; i < this.particleCount - 1; i++) {if (window.CP.shouldStopExecution(8)){break;}
+                var p0 = new Vector2(this.particles[i].position.x + this.xOff, this.particles[i].position.y + this.yOff);
+                var p1 = new Vector2(this.particles[i + 1].position.x + this.xOff, this.particles[i + 1].position.y + this.yOff);
+                if (this.Side(this.particles[i].position.x, this.particles[i].position.y, this.particles[i + 1].position.x, this.particles[i + 1].position.y, p1.x, p1.y) < 0) {
+                    _g.fillStyle = this.frontColor;
+                    _g.strokeStyle = this.frontColor;
+                } else {
+                    _g.fillStyle = this.backColor;
+                    _g.strokeStyle = this.backColor;
+                }
+                if (i == 0) {
+                    _g.beginPath();
+                    _g.moveTo(this.particles[i].position.x, this.particles[i].position.y);
+                    _g.lineTo(this.particles[i + 1].position.x, this.particles[i + 1].position.y);
+                    _g.lineTo((this.particles[i + 1].position.x + p1.x) * 0.5, (this.particles[i + 1].position.y + p1.y) * 0.5);
+                    _g.closePath();
+                    _g.stroke();
+                    _g.fill();
+                    _g.beginPath();
+                    _g.moveTo(p1.x, p1.y);
+                    _g.lineTo(p0.x, p0.y);
+                    _g.lineTo((this.particles[i + 1].position.x + p1.x) * 0.5, (this.particles[i + 1].position.y + p1.y) * 0.5);
+                    _g.closePath();
+                    _g.stroke();
+                    _g.fill();
+                } else if (i == this.particleCount - 2) {
+                    _g.beginPath();
+                    _g.moveTo(this.particles[i].position.x, this.particles[i].position.y);
+                    _g.lineTo(this.particles[i + 1].position.x, this.particles[i + 1].position.y);
+                    _g.lineTo((this.particles[i].position.x + p0.x) * 0.5, (this.particles[i].position.y + p0.y) * 0.5);
+                    _g.closePath();
+                    _g.stroke();
+                    _g.fill();
+                    _g.beginPath();
+                    _g.moveTo(p1.x, p1.y);
+                    _g.lineTo(p0.x, p0.y);
+                    _g.lineTo((this.particles[i].position.x + p0.x) * 0.5, (this.particles[i].position.y + p0.y) * 0.5);
+                    _g.closePath();
+                    _g.stroke();
+                    _g.fill();
+                } else {
+                    _g.beginPath();
+                    _g.moveTo(this.particles[i].position.x, this.particles[i].position.y);
+                    _g.lineTo(this.particles[i + 1].position.x, this.particles[i + 1].position.y);
+                    _g.lineTo(p1.x, p1.y);
+                    _g.lineTo(p0.x, p0.y);
+                    _g.closePath();
+                    _g.stroke();
+                    _g.fill();
+                }
+            }
+window.CP.exitedLoop(8);
+
+        }
+        this.Side = function(x1, y1, x2, y2, x3, y3) {
+            return ((x1 - x2) * (y3 - y2) - (y1 - y2) * (x3 - x2));
+        }
+    }
+    ConfettiRibbon.bounds = new Vector2(0, 0);
+    confetti = {};
+    confetti.Context = function(parent) {
+        var i = 0;
+        var canvasParent = document.getElementById(parent);
+        var canvas = document.createElement('canvas');
+        canvas.width = canvasParent.offsetWidth;
+        canvas.height = canvasParent.offsetHeight;
+        canvasParent.appendChild(canvas);
+        var context = canvas.getContext('2d');
+        var interval = null;
+        var confettiRibbonCount = 7;
+        var rpCount = 30;
+        var rpDist = 8.0;
+        var rpThick = 8.0;
+        var confettiRibbons = new Array();
+        ConfettiRibbon.bounds = new Vector2(canvas.width, canvas.height);
+        for (i = 0; i < confettiRibbonCount; i++) {if (window.CP.shouldStopExecution(9)){break;}
+            confettiRibbons[i] = new ConfettiRibbon(Math.random() * canvas.width, -Math.random() * canvas.height * 2, rpCount, rpDist, rpThick, 45, 1, 0.05);
+        }
+window.CP.exitedLoop(9);
+
+        var confettiPaperCount = 25;
+        var confettiPapers = new Array();
+        ConfettiPaper.bounds = new Vector2(canvas.width, canvas.height);
+        for (i = 0; i < confettiPaperCount; i++) {if (window.CP.shouldStopExecution(10)){break;}
+            confettiPapers[i] = new ConfettiPaper(Math.random() * canvas.width, Math.random() * canvas.height);
+        }
+window.CP.exitedLoop(10);
+
+        this.resize = function() {
+            canvas.width = canvasParent.offsetWidth;
+            canvas.height = canvasParent.offsetHeight;
+            ConfettiPaper.bounds = new Vector2(canvas.width, canvas.height);
+            ConfettiRibbon.bounds = new Vector2(canvas.width, canvas.height);
+        }
+        this.start = function() {
+            this.stop()
+            var context = this
+            this.interval = setInterval(function() {
+                confetti.update();
+            }, 1000.0 / frameRate)
+        }
+        this.stop = function() {
+            clearInterval(this.interval);
+        }
+        this.update = function() {
+            var i = 0;
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            for (i = 0; i < confettiPaperCount; i++) {if (window.CP.shouldStopExecution(11)){break;}
+                confettiPapers[i].Update(dt);
+                confettiPapers[i].Draw(context);
+            }
+window.CP.exitedLoop(11);
+
+            for (i = 0; i < confettiRibbonCount; i++) {if (window.CP.shouldStopExecution(12)){break;}
+                confettiRibbons[i].Update(dt);
+                confettiRibbons[i].Draw(context);
+            }
+window.CP.exitedLoop(12);
+
+        }
+    }
+    var confetti = new confetti.Context('confetti');
+    confetti.start();
+    $(window).resize(function() {
+        confetti.resize();
+    });
+});
+//# sourceURL=pen.js
+</script>
+</body></html>
