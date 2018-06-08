@@ -8,7 +8,7 @@ if(!$by_id){
     echo '<h2>'.$turmas->id.' - '.$turmas->turno.' - '.$turmas->ciclo.' - '.$turmas->serie.' - '.$turmas->codigo.' - '.$turmas->ano.'</h2>';
     echo '<h3>Alunos</h3>';
     foreach($alunos as $aluno){
-        echo $aluno['nome'].'<br>';
+        echo $aluno['id'].' - '.$aluno['nome'].'<br>';
     }
 }
 ?>

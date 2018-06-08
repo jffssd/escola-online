@@ -20,10 +20,20 @@
 
         $this->db->select('usuario.id, usuario.nome');
         $this->db->from('turma_alunos');
-        $this->db->join('usuario', 'usuario.id = turma_alunos.id');
+        $this->db->join('usuario', 'turma_alunos.aluno_id = usuario.id');
         $this->db->where('turma_alunos.turma_id', $id);
         $this->db->where('turma_alunos.status', 'A');
         $query = $this->db->get();
         return $query->result_array(); 
+    }
+
+    public function verif_alunos_chamada($id, $id_alunos){
+        $this->db->select('aluno_id');
+        $this->db->from('turma_alunos');
+        $this->db->where('turma_id', $id);
+        $this->db->where('status', 'A');
+        $this->db->where_in('aluno_id', $id_alunos);
+        $query = $this->db->get();
+        return count($query->result_array());
     }
 }

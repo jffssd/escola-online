@@ -3,7 +3,8 @@ class Turma extends CI_Controller{
 
 	public function __construct(){
 		
-		parent::__construct();
+        parent::__construct();
+        $this->load->library('parse');
 	}
 
     public function inicio($id = NULL){
@@ -39,7 +40,13 @@ class Turma extends CI_Controller{
     }
 
     public function processa_chamada(){
-        $alunos_faltantes = $this->input->post('aluno_chamada');
-        die(var_dump($alunos_faltantes));
+
+        $alunos = $this->parse->array_to_array_int($this->input->post('aluno_chamada'));
+        $turma_id = $this->input->post('turma_id');
+        if($this->M_Turma->verif_alunos_chamada($turma_id, $alunos) == count($alunos)){
+            
+        }else{
+            
+        }
     }
 }
