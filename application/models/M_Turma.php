@@ -18,7 +18,7 @@
 
     public function alunos_by_turma($id){
 
-        $this->db->select('usuario.nome');
+        $this->db->select('usuario.id, usuario.nome');
         $this->db->from('turma_alunos');
         $this->db->join('usuario', 'usuario.id = turma_alunos.id');
         $this->db->where('turma_alunos.turma_id', $id);
