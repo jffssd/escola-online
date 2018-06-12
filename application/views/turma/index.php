@@ -12,3 +12,10 @@ if(!$by_id){
     }
 }
 ?>
+<table>
+<?php 
+foreach ($horario as $item) {
+    echo '<td>'.$item->dia_semana.'</td>';
+}
+?>
+</table>

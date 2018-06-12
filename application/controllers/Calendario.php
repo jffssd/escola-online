@@ -17,6 +17,7 @@ class Calendario extends CI_Controller{
     public function gerar(){
         
         $var = $this->blacksmith->gerar_datas_calend();
+
         if($this->M_Calendario->inserir(1, $var)){
             var_dump('Success');
         }else{

@@ -15,6 +15,7 @@ class Turma extends CI_Controller{
             if($id){
                 $data['by_id'] = TRUE;
                 $data['alunos'] = $this->M_Turma->alunos_by_turma($id);
+                $data['horario'] = $this->M_Horario->by_turma_id($id);
             }else{
                 $data['by_id'] = FALSE;
             }
