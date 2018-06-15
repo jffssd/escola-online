@@ -4,7 +4,7 @@ class Calendario extends CI_Controller{
 	public function __construct(){
 		
         parent::__construct();
-        $this->load->library('blacksmith');
+        $this->load->library('l_calendario');
 	}
 
     public function inicio($id = NULL){
@@ -16,7 +16,7 @@ class Calendario extends CI_Controller{
 
     public function gerar(){
         
-        $var = $this->blacksmith->gerar_datas_calend();
+        $var = $this->l_calendario->gerar_datas_calend();
 
         if($this->M_Calendario->inserir(1, $var)){
             var_dump('Success');

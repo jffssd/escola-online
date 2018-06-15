@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Blacksmith {
+class L_Calendario {
     
     public function GetNumeroDias($mes){
 	
