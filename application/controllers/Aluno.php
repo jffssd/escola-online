@@ -5,6 +5,7 @@ class Aluno extends CI_Controller{
 		
         parent::__construct();
         $this->load->library('l_aluno');
+        $this->load->library('l_turma');
 	}
 
     public function todos(){
@@ -32,7 +33,10 @@ class Aluno extends CI_Controller{
             $date = new DateTime($data['aluno']->data_nasc);
     
             $data_nasc = $date->format('Y-m-d');
-    
+
+            $turma = $this->M_Turma->turma_by_aluno($id);
+            $data['turma'] = $this->l_turma->format_alias($turma);
+  
             $data['aluno']->data_nasc = $this->l_aluno->idade_by_data_nasc($data_nasc);
     
             $data['exp'] = $this->M_Aluno->get_exp_lvl($id);
@@ -49,7 +53,10 @@ class Aluno extends CI_Controller{
     
             $data['pontos'] = $this->M_Aluno->get_pontos_aluno($id);
     
+            $this->load->view('template/head');
             $this->load->view('aluno/inicio', $data);
+            $this->load->view('template/footer');
+
         }else{
             $data['heading'] = 'E_0388';
             $data['message'] = 'Aluno especificado não foi encontrado.';

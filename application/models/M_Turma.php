@@ -27,6 +27,17 @@
         return $query->result_array(); 
     }
 
+    public function turma_by_aluno($id){
+
+        $this->db->select('turma.turno, turma.ciclo, turma.serie, turma.codigo');
+        $this->db->from('turma_alunos');
+        $this->db->join('turma', 'turma_alunos.turma_id = turma.id');
+        $this->db->where('turma_alunos.aluno_id', $id);
+        $this->db->where('turma_alunos.status', 'A');
+        $query = $this->db->get();
+        return $query->row(); 
+    }
+
     public function verif_alunos_chamada($id, $id_alunos){
         $this->db->select('aluno_id');
         $this->db->from('turma_alunos');

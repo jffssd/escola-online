@@ -24,7 +24,6 @@
         }else{
             return FALSE;
         }
-        
     }
 
     public function get_exp_lvl($id){
