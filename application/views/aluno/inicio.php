@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="card card-aluno-profile">
                     <div class="card-body">
-                        <h4 class="card-title">Sobre mim</h4>
+                        <h4 class="card-title">Atributos</h4>
 
                         Nível: <?php echo $exp->nivel; ?> <br>
 

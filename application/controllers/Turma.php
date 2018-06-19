@@ -26,10 +26,11 @@ class Turma extends CI_Controller{
         }
     }
 
-    public function chamada($id){
+    public function chamada($id, $disciplina_id){
 
         $data['title'] = 'Turma';
         $turmas = $this->M_Turma->get_all($id);
+        $data['disciplina_id'] = $disciplina_id;
         if($turmas){
             $data['by_id'] = TRUE;
             $data['alunos'] = $this->M_Turma->alunos_by_turma($id);
@@ -44,10 +45,11 @@ class Turma extends CI_Controller{
 
         $alunos = $this->parse->array_to_array_int($this->input->post('aluno_chamada'));
         $turma_id = $this->input->post('turma_id');
+        $disciplina_id = $this->input->post('disciplina_id');
         if($this->M_Turma->verif_alunos_chamada($turma_id, $alunos) == count($alunos)){
-            
-        }else{
-            
+            if($this->M_Turma->insere_chamada($alunos, $turma_id, $disciplina_id)){
+                
+            }
         }
     }
 }

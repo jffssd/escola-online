@@ -47,4 +47,27 @@
         $query = $this->db->get();
         return count($query->result_array());
     }
+
+    public function insere_chamada($alunos, $turma_id, $disciplina_id){
+
+        $count = 0;
+        foreach($alunos as $aluno){
+            $data = array(
+                'aluno_id' => $aluno,
+                'turma_id' => $turma_id,
+                'disciplina_id' => $disciplina_id,
+                'data' => '2018/06/19 00:00:00',
+                'ano' => 2018,
+                'status' => 'F'
+            );
+            if($this->db->insert('chamada', $data)){
+                $count++;
+            }
+        }
+        if(count($alunos) == $count){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
 }

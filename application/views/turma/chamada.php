@@ -30,6 +30,8 @@
 </style>
 <form method='post' id='userform' action="<?php echo base_url().'turma/processa_chamada';?>">
     <input type="hidden" id="turma_id" name="turma_id" value="<?php echo $turmas->id;?>">
+    <input type="hidden" id="disciplina_id" name="disciplina_id" value="<?php echo $disciplina_id;?>">
+
     <table id="tb_chamada">
         <thead>
             <tr><th>id</th><th>nome</th><th>falta</th></tr>
@@ -40,5 +42,5 @@
             <tr><td><?php echo $aluno['id'];?></td><td><?php echo $aluno['nome'];?></td><td><input type="checkbox" name="aluno_chamada[]" value="<?php echo $aluno['id'];?>"></td></tr>
         <?php }?>
     </table>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Enviar">
 </form>
