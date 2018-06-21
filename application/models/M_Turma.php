@@ -39,6 +39,7 @@
     }
 
     public function verif_alunos_chamada($id, $id_alunos){
+
         $this->db->select('aluno_id');
         $this->db->from('turma_alunos');
         $this->db->where('turma_id', $id);
@@ -48,8 +49,25 @@
         return count($query->result_array());
     }
 
-    public function insere_chamada($alunos, $turma_id, $disciplina_id){
+    public function lista_chamadas_por_turma($id){
 
+        $query = $this->db->get_where('chamada_turma', array('turma_id' => $id));
+        $query->result_array();
+    }
+
+    public function abre_chamada($id, $disciplina_id, $data_id, $data){
+        
+        $data = array(
+            'disciplina_id' => $disciplina_id,
+            'turma_id' => $id,
+            'horario_id' => $data_id,
+            'data' => $data,
+            'status' => 'A'
+        );
+    }
+
+    public function insere_chamada($alunos, $turma_id, $disciplina_id){
+        
         $count = 0;
         foreach($alunos as $aluno){
             $data = array(

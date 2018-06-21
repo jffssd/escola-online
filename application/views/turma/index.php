@@ -1,9 +1,3 @@
-<head>
-    <link rel="stylesheet" type="text/css" href="<?php echo site_url();?>assets/css/bootstrap.css">
-</head>
-<body>
-<div class="container">
-<h1> Turma </h1>
 <?php 
 if(!$by_id){
     foreach($turmas as $turma){
@@ -16,7 +10,7 @@ if(!$by_id){
 <?php
 if($by_id){
 ?>
-<h2><?php echo $turmas->id.' - '.$turmas->turno.' - '.$turmas->ciclo.' - '.$turmas->serie.' - '.$turmas->codigo.' - '.$turmas->ano.'</h2>';?>
+<h2>Turma <?php echo $turmas->id.$turmas->turno.$turmas->ciclo.$turmas->serie.$turmas->codigo.'-'.$turmas->ano.'</h2>';?>
 <h3>Alunos</h3>
     <div class="col-md-12">
         <table class="table">
@@ -46,10 +40,18 @@ if($by_id){
 <?php 
 }
 ?>
+<style>
+.horario_row{
+    height: 70px;
+}
+.horario_link{
+    color: #222;
+}
+</style>
 <h3>Horário</h3>
-<div class="col-md-12">
-<table class="table">
-    <thead>
+<div class="col-md-12" style="padding:0px;">
+<table class="table table-bordered" style="text-align:center; align:center;">
+    <thead class="thead-dark">
         <tr>
             <th>Seg.</th>
             <th>Ter.</th>
@@ -62,17 +64,21 @@ if($by_id){
         <?php 
         foreach ($horario as $item) {
             if($item->posicao == 1){
-                echo '<tr>';
-            }?>
-
-            <td><a href="<?php echo site_url().'disciplina/visualizar/'.$item->disciplina_id;?>"><?php echo $item->nome;?></a></td>
+                echo '<tr class="horario_row">';
+            }
+            if($item->dia_semana == $dia_sem){?>
+                <td style="vertical-align: middle; background-color: #999;">
+            <?php }else{ ?>
+                <td style="vertical-align: middle;">
+            <?php } ?>
+            <a class="horario_link" href="<?php echo site_url().'disciplina/visualizar/'.$item->disciplina_id;?>"><?php echo $item->sigla;?></a></td>
             
             <?php
             if(($item->posicao % 5) == 0){
                 if($item->posicao == 20){
                     echo '</tr>';
                 }else{
-                    echo '</tr><tr>';
+                    echo '</tr><tr class="horario_row">';
                 }
             }
         }

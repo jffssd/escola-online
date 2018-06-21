@@ -31,4 +31,10 @@
         }
         return TRUE;
     }
+
+    public function id_by_data($data){
+
+        $query = $this->db->get_where('calendario_datas', array('data' => $data));
+        return $query->row(); 
+    }
 }

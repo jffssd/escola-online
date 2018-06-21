@@ -59,4 +59,9 @@ class L_Calendario {
         }
         return $my_third_array;
     }
+
+    public function info_dia_semana($data){
+        
+        return date('w', strtotime($data)) + 1;
+    }
 }

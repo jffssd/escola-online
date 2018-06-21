@@ -8,7 +8,7 @@
 	<meta name="author" content="João Felipe">
 	<link href="<?php echo base_url('assets/css/bootstrap/bootstrap.min.css');?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo base_url('assets/css/font-awesome/fontawesome-all.css');?>" rel="stylesheet" type="text/css" />
-
+	<script src="<?php echo base_url('assets/js/jquery/jquery-2.1.3.min.js');?>"></script>
 </head>
 <style>
 .main-aluno{
