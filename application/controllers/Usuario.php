@@ -105,7 +105,15 @@
 								'login' => true,
 								'permissao' => $usuario_id->permissao,
 								'imagem_perfil' => $usuario_id->imagem_perfil
-				 	);
+					 );
+					
+					if($usuario_id->aluno == 'S'){
+						$user_data['aluno'] = TRUE;
+					}
+
+					if($usuario_id->professor == 'S'){
+						$user_data['professor'] = TRUE;
+					}
 
 				 	$this->session->set_userdata($user_data);
 
