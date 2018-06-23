@@ -49,10 +49,20 @@
         return count($query->result_array());
     }
 
-    public function lista_chamadas_por_turma($id){
-
-        $query = $this->db->get_where('chamada_turma', array('turma_id' => $id));
-        $query->result_array();
+    public function busca_lista_chamada($id_turma, $id_disciplina, $id_professor){
+        
+        $query =  $this->db->query("SELECT id, data, dia_semana
+                                    FROM calendario_datas
+                                    WHERE dia_semana in (SELECT dia_semana
+                                                        FROM horario 
+                                                        WHERE disciplina_id = {$id_disciplina}
+                                                        AND professor_id = {$id_professor}
+                                                        AND turma_id = {$id_turma})
+                                    AND letivo = 'S'
+                                    AND feriado = 'N'
+                                    AND data > CURRENT_DATE();
+                                    ");
+        return $query->result();
     }
 
     public function abre_chamada($id, $disciplina_id, $data_id, $data){
@@ -64,6 +74,23 @@
             'data' => $data,
             'status' => 'A'
         );
+    }
+
+    public function gera_chamada($data_id, $turma_id, $disciplina_id, $data_plain){
+
+        $data = array(
+            'data_id' => $data_id,
+            'turma_id' => $turma_id,
+            'disciplina_id' => $disciplina_id,
+            'data' => $data_plain,
+            'status' => 'A'
+        );
+        if($this->db->insert('chamada_turma', $data)){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+
     }
 
     public function insere_chamada($alunos, $turma_id, $disciplina_id){

@@ -37,4 +37,10 @@
         $query = $this->db->get_where('calendario_datas', array('data' => $data));
         return $query->row(); 
     }
+
+    public function data_by_id($id){
+
+        $query = $this->db->get_where('calendario_datas', array('id' => $id));
+        return $query->row(); 
+    }
 }

@@ -93,7 +93,7 @@ $(document).ready(function(){
 
         console.log(aluno_chamada);
      $.ajax({
-         url: "<?php echo base_url().'turma/processa_chamada';?>", 
+         url: "<?php echo base_url().'chamada/efetuar/processa_chamada';?>", 
          dataType: "json",
          data: {
                 turma_id, 

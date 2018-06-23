@@ -61,7 +61,12 @@ class L_Calendario {
     }
 
     public function info_dia_semana($data){
-        
+
         return date('w', strtotime($data)) + 1;
+    }
+
+    public function formatar_data($data){
+
+        return date('d/m/Y', strtotime($data));
     }
 }

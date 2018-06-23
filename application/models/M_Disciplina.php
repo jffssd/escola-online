@@ -1,5 +1,3 @@
-<pre>
-
 <?php
 	class M_Disciplina extends CI_Model{
 
