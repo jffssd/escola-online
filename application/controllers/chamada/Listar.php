@@ -39,6 +39,8 @@ class Listar extends CI_Controller{
             $datas->data = $this->l_calendario->formatar_data($datas->data);
         }
 
+        $data['turma_id'] = $turma_id;
+        $data['disciplina_id'] = $disciplina_id;
         $data['datas_chamada'] = $datas_chamada;
         $this->load->view('template/head', $data);
         $this->load->view('turma/chamada/listar', $data);

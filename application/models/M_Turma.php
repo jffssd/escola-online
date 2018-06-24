@@ -51,16 +51,18 @@
 
     public function busca_lista_chamada($id_turma, $id_disciplina, $id_professor){
         
-        $query =  $this->db->query("SELECT id, data, dia_semana
+        $query =  $this->db->query("SELECT calendario_datas.id, calendario_datas.data, calendario_datas.dia_semana, chamada_turma.status
                                     FROM calendario_datas
-                                    WHERE dia_semana in (SELECT dia_semana
+                                    LEFT JOIN chamada_turma ON calendario_datas.id = chamada_turma.data_id
+                                    WHERE calendario_datas.dia_semana IN (SELECT dia_semana
                                                         FROM horario 
                                                         WHERE disciplina_id = {$id_disciplina}
                                                         AND professor_id = {$id_professor}
                                                         AND turma_id = {$id_turma})
-                                    AND letivo = 'S'
-                                    AND feriado = 'N'
-                                    AND data > CURRENT_DATE();
+
+                                    AND calendario_datas.letivo = 'S'
+                                    AND calendario_datas.feriado = 'N'
+                                    AND calendario_datas.data > CURRENT_DATE()
                                     ");
         return $query->result();
     }
