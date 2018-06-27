@@ -24,6 +24,7 @@
 </style>
 <br>
 <form method='post' id='userform' action="<?php echo base_url().'turma/processa_chamada';?>">
+    <input type="hidden" id="data_id" value="<?php echo $data_id;?>">
     <input type="hidden" id="turma_id" value="<?php echo $turmas->id;?>">
     <input type="hidden" id="disciplina_id" value="<?php echo $disciplina_id;?>">
     <input class="form-control" id="data_chamada" type="text" placeholder="<?php echo $data;?>" readonly>
@@ -42,6 +43,8 @@
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
     Finalizar chamada
     </button>
+    <a class="btn btn-sm btn-secondary" href="<?php echo base_url().'chamada/listar/turma/'.$turmas->id.'/'.$disciplina_id;?>">Voltar</a>
+
 </form>
 
 <!-- Modal -->
@@ -86,6 +89,7 @@ $(document).ready(function(){
         var turma_id = $("#turma_id").val();
         var disciplina_id = $("#disciplina_id").val();
         var date = $("#data_chamada").val();
+        var data_id = $("#data_id").val();
         var aluno_chamada = [];            
         $("input:checkbox[name=aluno_chamada]:checked").each(function(){
             aluno_chamada.push($(this).val());
@@ -98,7 +102,7 @@ $(document).ready(function(){
          data: {
                 turma_id, 
                 disciplina_id, 
-                date,
+                data_id,
                 aluno_chamada
          },
          type: 'POST',
@@ -113,5 +117,10 @@ $(document).ready(function(){
       });
     });
 });
+
+
+$('#exampleModal1').on('hidden.bs.modal', function () {
+  window.location.replace("http://localhost/escola-online/chamada/listar/turma/<?php echo $turmas->id;?>/<?php echo $disciplina_id;?>");
+})
 </script>
 

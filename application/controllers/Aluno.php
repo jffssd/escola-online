@@ -22,11 +22,11 @@ class Aluno extends CI_Controller{
         $this->load->view('aluno/index', $data);
     }
 
-    public function inicio($id){
+    public function perfil(){
 
-        $data['title'] = 'Meu Perfil';
+        $aluno_id = intval($this->session->userdata('usuario_id'));
     
-        $data['aluno'] = $this->M_Aluno->get_info($id);
+        $data['aluno'] = $this->M_Aluno->get_info($aluno_id);
         
         if($data['aluno']){
 
@@ -34,12 +34,12 @@ class Aluno extends CI_Controller{
     
             $data_nasc = $date->format('Y-m-d');
 
-            $turma = $this->M_Turma->turma_by_aluno($id);
+            $turma = $this->M_Turma->turma_by_aluno($aluno_id);
             $data['turma'] = $this->l_turma->format_alias($turma);
   
             $data['aluno']->data_nasc = $this->l_aluno->idade_by_data_nasc($data_nasc);
     
-            $data['exp'] = $this->M_Aluno->get_exp_lvl($id);
+            $data['exp'] = $this->M_Aluno->get_exp_lvl($aluno_id);
     
             $nivel_atual = $data['exp']->nivel + 1;
     
@@ -47,11 +47,11 @@ class Aluno extends CI_Controller{
     
             $data['exp_prox_nivel'] = $matriz_nivel->exp_padrao;
     
-            $data['conquistas'] = $this->M_Aluno->get_conquistas_aluno($id);
+            $data['conquistas'] = $this->M_Aluno->get_conquistas_aluno($aluno_id);
     
             $data['conquistas_all'] = $this->M_Aluno->get_conquistas();
     
-            $data['pontos'] = $this->M_Aluno->get_pontos_aluno($id);
+            $data['pontos'] = $this->M_Aluno->get_pontos_aluno($aluno_id);
     
             $this->load->view('template/head');
             $this->load->view('aluno/inicio', $data);
@@ -62,5 +62,90 @@ class Aluno extends CI_Controller{
             $data['message'] = 'Aluno especificado não foi encontrado.';
             $this->load->view('errors/cli/error_404', $data);
         }
+    }
+
+
+    public function faltas(){
+
+        $aluno_id = intval($this->session->userdata('usuario_id'));
+
+        $turma = $this->M_Aluno->get_turma_by_aluno($aluno_id);
+
+        $total = $this->M_Aluno->get_faltas_aluno_total($aluno_id);
+
+        $data['faltas_total'] = intval($total['faltas_total']);
+
+        $disciplinas = $this->M_Turma->busca_disciplina_turma($turma->id);
+
+        $faltas_disciplinas = $this->M_Aluno->get_faltas_aluno_por_disciplina($aluno_id, $turma->id);
+        
+        foreach($disciplinas as $disc){
+            $disc->faltas = 0;
+        }
+
+        foreach($disciplinas as $disc){
+            
+            foreach($faltas_disciplinas as $falta_disc){
+                if($disc->disciplina_id == $falta_disc->id){
+                    $disc->faltas = intval($falta_disc->faltas);
+                    break;
+                }else{
+                    $disc->faltas = 0;
+                }
+            }
+        }
+
+        $data['faltas_disciplinas'] = $disciplinas;
+        $this->load->view('template/head');
+        $this->load->view('usuario/aluno/faltas', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function notas(){
+
+        $aluno_id = intval($this->session->userdata('usuario_id'));
+
+        $turma = $this->M_Aluno->get_turma_by_aluno($aluno_id);
+
+        $disciplinas = $this->M_Turma->busca_disciplina_turma($turma->id);
+
+        foreach($disciplinas as $disc){
+            $disc->turma_id = intval($turma->id);
+        }
+
+        $data['turma_id'] = $turma->id;
+        $data['disciplinas'] = $disciplinas;
+        $this->load->view('template/head');
+        $this->load->view('usuario/aluno/notas', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function notas_por_disciplinas($turma_id, $disciplina_id){
+
+        $aluno_id = intval($this->session->userdata('usuario_id'));
+
+        $atividades = $this->M_Turma->atividades_por_param($turma_id, $disciplina_id);
+        
+        $disciplina = $this->M_Disciplina->by_id($disciplina_id);
+
+        $notas_aluno = $this->M_Turma->notas_aluno($aluno_id);
+
+        foreach($atividades as $ativ){
+            foreach($notas_aluno as $notas){
+                if($ativ->id == $notas->id){
+                    $ativ->nota_aluno = intval($notas->nota);
+                    break;
+                }else{
+                    $ativ->nota_aluno = 0;
+                }
+            }
+        }
+
+        $data['disciplina'] = $disciplina;
+        $data['atividades'] = $atividades;
+        $data['turma_id'] = $turma_id;
+
+        $this->load->view('disciplina/nota_disciplina', $data);
+
     }
 }

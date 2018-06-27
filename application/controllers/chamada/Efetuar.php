@@ -6,6 +6,9 @@ class Efetuar extends CI_Controller{
         parent::__construct();
         $this->load->library('parse');
         $this->load->library('l_calendario');
+        if(!$this->session->userdata('professor')) {
+            redirect('home');
+        }
     }
     
     public function turma($turma_id, $disciplina_id, $data_id){
@@ -24,6 +27,7 @@ class Efetuar extends CI_Controller{
             $data['by_id'] = TRUE;
             $data['alunos'] = $this->M_Turma->alunos_by_turma($turma_id);
             $data['turmas'] = $turmas;
+            $data['data_id'] = $data_id;
             $this->load->view('template/head');
             $this->load->view('turma/chamada/chamada', $data);
             $this->load->view('template/footer');
@@ -33,13 +37,52 @@ class Efetuar extends CI_Controller{
     }
 
     public function processa_chamada(){
-        $alunos = $this->input->post('aluno_chamada');
-        $alunos = $this->parse->array_to_array_int($this->input->post('aluno_chamada'));
-        $turma_id = intval($this->input->post('turma_id'));
+
+        $data_id = intval($this->input->post('data_id'));
+
         $disciplina_id = intval($this->input->post('disciplina_id'));
-        $data_chamada = str_replace('-','/',$this->input->post('data_chamada').' 00:00:00');
-        if($this->M_Turma->verif_alunos_chamada($turma_id, $alunos) == count($alunos)){
-            if($this->M_Turma->gera_chamada($alunos, $turma_id, $disciplina_id)){
+
+        $turma_id = intval($this->input->post('turma_id'));
+
+        $chamada_id = $this->M_Turma->busca_id_chamada($data_id, $disciplina_id, $turma_id);
+
+        $cham_id = $chamada_id->id;
+
+        if($this->input->post('aluno_chamada') != NULL){
+
+            $alunos = $this->parse->array_to_array_int($this->input->post('aluno_chamada'));
+
+            //Verifica se todos os alunos desta chamada estão vinculados à turma
+            if($this->M_Turma->verif_alunos_chamada($turma_id, $alunos) == count($alunos)){
+                
+                //Verifica se existe chamada em aberto
+                if($this->M_Turma->verif_chamada_ativa($cham_id)){
+                    
+                    //Insere dados da chamada no banco
+                    if($this->M_Turma->insere_chamada($alunos, $cham_id)){
+                        
+                        if($this->M_Turma->finaliza_chamada($cham_id)){
+                            echo json_encode(TRUE);
+                            exit;
+                        }else{
+                            echo json_encode(FALSE);
+                            exit;
+                        }
+                    }else{
+                        echo json_encode(FALSE);
+                        exit;
+                    }   
+                }else{
+                    echo json_encode(FALSE);
+                    exit;
+                }
+            }else{
+                echo json_encode(FALSE);
+                exit;
+            }
+        }else{
+        
+            if($this->M_Turma->finaliza_chamada($cham_id)){
                 echo json_encode(TRUE);
                 exit;
             }else{
@@ -47,13 +90,18 @@ class Efetuar extends CI_Controller{
                 exit;
             }
         }
+
+        
+
     }
+
 
     public function gerar_chamada($turma_id, $disciplina_id, $data_id){
 
         $data_plain = $this->M_Calendario->data_by_id($data_id);
         
         if($this->M_Turma->gera_chamada($data_id, $turma_id, $disciplina_id, $data_plain->data)){
+            
             echo json_encode(TRUE);
             exit;
         }else{

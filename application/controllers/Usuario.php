@@ -14,8 +14,18 @@
 				redirect('entrar');
 			}
 			$data['title'] = 'Dashboard';
-			$this->load->view('usuario/dashboard', $data);
 
+			if($this->session->userdata('professor')){
+				$this->load->view('template/head');
+				$this->load->view('usuario/professor/dashboard', $data);
+				$this->load->view('template/footer');
+			}
+
+			if($this->session->userdata('aluno')){
+				$this->load->view('template/head');
+				$this->load->view('usuario/aluno/dashboard', $data);
+				$this->load->view('template/footer');
+			}
 		}
 
 		public function perfil(){
@@ -162,6 +172,8 @@
 			$this->session->unset_userdata('email');
 			$this->session->unset_userdata('permissao');
 			$this->session->unset_userdata('imagem_perfil');
+			$this->session->unset_userdata('professor');
+			$this->session->unset_userdata('aluno');
 
 			//Set Message
 			$this->session->set_flashdata('user_loggedout', 'You are logged out.');
